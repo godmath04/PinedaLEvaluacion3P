@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Maui;
 using PinedaLEvaluacion3P.Models;
 using PinedaLEvaluacion3P.Services;
+using Repaso3.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,9 @@ namespace PinedaLEvaluacion3P.ViewModels
             await App.Current.MainPage.DisplayAlert("Éxito",
                 "Proyecto guardado en la base de datos correctamente.",
                 "OK");
+
+            //Registro en log 
+            await LogService.EscribirLogAsync(NombreProyecto);
 
             // Borramos campos
             NombreProyecto = string.Empty;

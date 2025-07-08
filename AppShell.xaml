@@ -15,4 +15,9 @@
 
     </Tab>
 
+    <Tab Title="Lista Proyectos">
+        <ShellContent
+        ContentTemplate="{DataTemplate views:ListarProyectosView}" />
+    </Tab>
+
 </Shell>
