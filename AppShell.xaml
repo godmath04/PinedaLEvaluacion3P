@@ -20,4 +20,9 @@
         ContentTemplate="{DataTemplate views:ListarProyectosView}" />
     </Tab>
 
+    <Tab Title="Logs">
+        <ShellContent ContentTemplate="{DataTemplate views:LogsView}" />
+    </Tab>
+
+
 </Shell>
