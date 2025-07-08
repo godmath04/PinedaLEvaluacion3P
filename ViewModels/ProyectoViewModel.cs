@@ -1,8 +1,9 @@
 ﻿//Usar atributos y crear comandos
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Maui;
 using PinedaLEvaluacion3P.Models;
-//using PinedaLEvaluacion3P.Services;
+using PinedaLEvaluacion3P.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +41,7 @@ namespace PinedaLEvaluacion3P.ViewModels
         }
 
         
-        public void GuardarProyecto()
+        public async void GuardarProyecto()
         {
 
             //Logica del limite que no se puede ingresar mayor al 50% y duracion de <1año
@@ -53,8 +54,28 @@ namespace PinedaLEvaluacion3P.ViewModels
             }
 
             //Si los datos son validos
-            App.Current.MainPage.DisplayAlert("Correcto", "Proyecto guardado correctamente en la base de datos", "OK");
+            //Instanciamos la clase proyecto y le pasamos los datos del formulario
 
+            var nuevoProyecto = new Proyecto
+            {
+                NombreProyecto = NombreProyecto,
+                Responsable = Responsable,
+                Progreso = Progreso,
+                DuracionDias = DuracionDias
+            };
+            //Guardar el prouecto mediante SQLite
+
+            await App.Database.InsertarProyectoAsync(nuevoProyecto);
+
+            await App.Current.MainPage.DisplayAlert("Éxito",
+                "Proyecto guardado en la base de datos correctamente.",
+                "OK");
+
+            // Borramos campos
+            NombreProyecto = string.Empty;
+            Responsable = string.Empty;
+            Progreso = 0;
+            DuracionDias = 0;
 
 
 
