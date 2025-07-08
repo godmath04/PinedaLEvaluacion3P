@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PinedaLEvaluacion3P.Views.FormularioProyectoView"
+             xmlns:vm="clr-namespace:PinedaLEvaluacion3P.ViewModels"
+             Title="Formulario de Nuevo Proyecto - Luis Pineda 25/09/2000">
+    <ContentPage.BindingContext>
+        <vm:ProyectoViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Entry Placeholder="Nombre del Proyecto"
+                   Text="{Binding NombreProyecto}"/>
+
+            <Entry Placeholder="Responsable del Proyecto"
+                   Text="{Binding Reponsable}"/>
+
+
+            <Entry Placeholder="Progreso (%)"
+                   Keyboard="Numeric"
+                   Text="{Binding Progreso}" />
+
+            <Entry Placeholder="Duración en Días"
+                   Keyboard="Numeric"
+                   Text="{Binding DuracionDias}" />
+
+            <Button Text="Guardar Proyecto"
+                    Command="{Binding SaveCommand}" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
